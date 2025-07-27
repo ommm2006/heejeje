@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Patch Up Please 🥺</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Comic Sans MS', cursive;
+      text-align: center;
+      background-color: #fff0f5;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-top: 60px;
+      color: #ff69b4;
+    }
+
+    .btn {
+      font-size: 1.5em;
+      padding: 10px 30px;
+      border: none;
+      border-radius: 10px;
+      margin: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    #yesBtn {
+      background-color: #7cfc00;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: #ff4d4d;
+      color: white;
+      position: absolute;
+    }
+
+    .thank-you {
+      display: none;
+      font-size: 2em;
+      color: #ff1493;
+      margin-top: 50px;
+    }
+
+    .flower {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      animation: fall 3s linear infinite;
+      top: -50px;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-50px) rotate(0deg); }
+      100% { transform: translateY(100vh) rotate(360deg); }
+    }
+
+    #crossMessage {
+      display: none;
+      font-size: 3em;
+      color: red;
+      margin-top: 30px;
+    }
+
+    #loveSection {
+      display: none;
+      font-size: 2em;
+      color: #ff1493;
+      margin-top: 100px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>please patchup krle *puppy eyes*🥺</h1>
+
+  <button id="yesBtn" class="btn">Yes 💕</button>
+  <button id="noBtn" class="btn">No 😠</button>
+
+  <div id="crossMessage">❌😡 Fine then!</div>
+
+  <div id="thankYou" class="thank-you">
+    hwhehhe i love you penguin
+  </div>
+
+  <div id="loveSection">
+    🐧 HEHEHHEHE UMAHHHHH<br>
+    I love you my cutu penguin 💕🐧
+  </div>
+
+  <!-- Flower container -->
+  <div id="flowers"></div>
+
+  <script>
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+    const thankYou = document.getElementById('thankYou');
+    const flowers = document.getElementById('flowers');
+    const loveSection = document.getElementById('loveSection');
+    const crossMessage = document.getElementById('crossMessage');
+
+    // Make "No" button move randomly
+    noBtn.addEventListener('mouseover', () => {
+      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+    });
+
+    noBtn.addEventListener('click', () => {
+      crossMessage.style.display = 'block';
+    });
+
+    yesBtn.addEventListener('click', () => {
+      thankYou.style.display = 'block';
+      createFlowers();
+      setTimeout(() => {
+        thankYou.style.display = 'none';
+        loveSection.style.display = 'block';
+      }, 4000); // redirect after 4 seconds
+    });
+
+    function createFlowers() {
+      for (let i = 0; i < 30; i++) {
+        const flower = document.createElement('div');
+        flower.classList.add('flower');
+        flower.textContent = '🌸';
+        flower.style.left = Math.random() * 100 + 'vw';
+        flower.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        flowers.appendChild(flower);
+
+        setTimeout(() => flower.remove(), 5000);
+      }
+    }
+        const videoBtn = document.createElement('button');
+    videoBtn.textContent = '🎥 Watch Something Cute';
+    videoBtn.className = 'btn';
+    videoBtn.style.backgroundColor = '#1e90ff';
+    videoBtn.style.color = 'white';
+    videoBtn.style.display = 'none';
+    videoBtn.onclick = () => {
+      window.open('https://youtube.com/shorts/iHzxnORD01Q?feature=share', '_blank');
+    };
+    document.body.appendChild(videoBtn);
+
+    yesBtn.addEventListener('click', () => {
+      thankYou.style.display = 'block';
+      createFlowers();
+      setTimeout(() => {
+        thankYou.style.display = 'none';
+        loveSection.style.display = 'block';
+        videoBtn.style.display = 'inline-block';
+      }, 4000); // after flowers, show love + video
+    });
+
+    
+ 
+  </script>
+</body>
+</html>
